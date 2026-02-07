@@ -902,14 +902,14 @@ function mkIcon(label, color) {
   return "data:image/svg+xml," + encodeURIComponent(
     "<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'>" +
     "<rect rx='16' width='80' height='80' fill='" + color + "'/>" +
-    "<text x='40' y='52' text-anchor='middle' fill='%23fff' font-size='22' font-weight='700' font-family='Inter,Arial'>" + label + "</text></svg>"
+    "<text x='40' y='52' text-anchor='middle' fill='#fff' font-size='22' font-weight='700' font-family='Inter,Arial'>" + label + "</text></svg>"
   );
 }
 const icons = {
-  mic: mkIcon('CI','%23006D93'), phone: mkIcon('uP','%230891b2'), lock: mkIcon('uA','%231e40af'),
-  chart: mkIcon('RP','%23059669'), team: mkIcon('SV','%23E9530E'), voicebot: mkIcon('VB','%23dc2626'),
-  ai: mkIcon('AI','%237c3aed'), queue: mkIcon('FQ','%2316a34a'), dispatch: mkIcon('DM','%230f766e'),
-  summary: mkIcon('SH','%232563eb'), search: mkIcon('FT','%230284c7'), tag: mkIcon('%23','%23ea580c')
+  mic: mkIcon('CI','#006D93'), phone: mkIcon('uP','#0891b2'), lock: mkIcon('uA','#1e40af'),
+  chart: mkIcon('RP','#059669'), team: mkIcon('SV','#E9530E'), voicebot: mkIcon('VB','#dc2626'),
+  ai: mkIcon('AI','#7c3aed'), queue: mkIcon('FQ','#16a34a'), dispatch: mkIcon('DM','#0f766e'),
+  summary: mkIcon('SH','#2563eb'), search: mkIcon('FT','#0284c7'), tag: mkIcon('#','#ea580c')
 };
 
 // --- Unsplash images ---
