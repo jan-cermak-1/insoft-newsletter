@@ -861,6 +861,7 @@ body {
     <button class="toolbar-btn" onclick="setVariant(6)" data-group="variant">V6</button>
     <button class="toolbar-btn" onclick="setVariant(7)" data-group="variant" style="border-color:rgba(110,231,160,0.5);color:#6ee7a0">V7</button>
     <button class="toolbar-btn" onclick="setVariant(8)" data-group="variant" style="border-color:rgba(233,83,14,0.6);color:#f59958">V8</button>
+    <button class="toolbar-btn" onclick="setVariant(9)" data-group="variant" style="border-color:rgba(88,86,214,0.6);color:#a5a4e3">V9</button>
   </div>
   <div class="toolbar-sep" id="client-sep"></div>
   <div class="toolbar-group" id="client-group">
@@ -1049,6 +1050,21 @@ function footer8() {
       <p><strong>Insoft s.r.o.</strong> &middot; Praha &middot; <a href="mailto:info@insoft.cz">info@insoft.cz</a> &middot; <a href="https://www.insoft.cz">www.insoft.cz</a></p>
       <p style="margin-top:8px"><a href="#" class="unsubscribe-link">Odhlásit se z odběru</a></p>
       <p style="font-size:10px;color:#aaa;margin-top:8px">&copy; 2026 Insoft s.r.o. Všechna práva vyhrazena.</p>
+    </div>`;
+}
+
+// V9 — Apple-inspired minimal footer
+function footer9() {
+  return `
+    <div style="padding:40px 40px 32px;text-align:center;font-family:-apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+      <div style="margin-bottom:16px">
+        <span style="font-size:18px;font-weight:700;letter-spacing:-0.3px;color:#1d1d1f">insoft</span><span style="color:#5856d6;font-size:18px;font-weight:700">.</span>
+      </div>
+      <p style="font-size:12px;color:#86868b;margin:0 0 4px;line-height:1.6">Praha, Česká republika</p>
+      <p style="font-size:12px;color:#86868b;margin:0 0 16px"><a href="mailto:info@insoft.cz" style="color:#86868b;text-decoration:none">info@insoft.cz</a> &middot; <a href="https://www.insoft.cz" style="color:#86868b;text-decoration:none">www.insoft.cz</a></p>
+      <div style="height:1px;background:#e5e5e7;max-width:120px;margin:0 auto 16px"></div>
+      <p style="font-size:11px;color:#c7c7cc;margin:0"><a href="#" style="color:#c7c7cc;text-decoration:underline">Odhlásit se z odběru</a></p>
+      <p style="font-size:10px;color:#d1d1d6;margin:8px 0 0">&copy; 2026 Insoft s.r.o.</p>
     </div>`;
 }
 
@@ -1929,6 +1945,141 @@ function variant8() {
     ${footer8()}`;
 }
 
+// --- Variant 9: Apple-inspired minimal design ---
+function variant9() {
+  const f = "-apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
+  const dk = '#1d1d1f';   // Apple dark
+  const gr = '#86868b';   // Apple gray
+  const ac = '#5856d6';   // Apple indigo
+  const bg2 = '#f5f5f7';  // Apple light bg
+  const ln = '#e5e5e7';   // divider
+
+  return `
+    <div style="font-family:${f};background:#fff">
+    <!-- Minimal header -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="padding:28px 40px 0">
+          <span style="font-size:22px;font-weight:700;letter-spacing:-0.3px;color:${dk}">insoft</span><span style="color:${ac};font-size:22px;font-weight:700">.</span>
+        </td>
+        <td style="padding:28px 40px 0;text-align:right">
+          <a href="#" style="font-size:13px;color:${gr};text-decoration:none">Zobrazit v prohlížeči</a>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Hero -->
+    <div style="padding:72px 40px 56px;text-align:center">
+      <p style="font-size:13px;font-weight:600;color:${ac};text-transform:uppercase;letter-spacing:0.12em;margin:0 0 20px">Newsletter Q1/2026</p>
+      <h1 style="font-size:44px;font-weight:700;letter-spacing:-1.5px;color:${dk};line-height:1.08;margin:0 0 20px">Inteligentní<br>komunikace.</h1>
+      <p style="font-size:17px;color:${gr};line-height:1.55;margin:0 auto 36px;max-width:380px">Novinky z vývoje, AI nástroje a plány pro rok 2026. Vše podstatné na jednom místě.</p>
+      <a href="#" style="display:inline-block;background:${ac};color:#fff;font-size:15px;font-weight:500;padding:13px 30px;border-radius:980px;text-decoration:none">Rezervovat konzultaci &rarr;</a>
+    </div>
+
+    <!-- Thin divider -->
+    <div style="padding:0 40px"><div style="height:1px;background:${ln}"></div></div>
+
+    <!-- Features intro -->
+    <div style="padding:56px 40px 8px;text-align:center">
+      <p style="font-size:13px;font-weight:600;color:${ac};text-transform:uppercase;letter-spacing:0.12em;margin:0 0 10px">Dokončeno v roce 2025</p>
+      <h2 style="font-size:32px;font-weight:700;letter-spacing:-0.8px;color:${dk};margin:0;line-height:1.15">Pět klíčových<br>novinek.</h2>
+    </div>
+
+    <!-- Feature 01 -->
+    <div style="padding:44px 40px 0">
+      <span style="font-size:64px;font-weight:800;color:${bg2};line-height:1;display:block;letter-spacing:-2px">01</span>
+      <h3 style="font-size:20px;font-weight:700;color:${dk};margin:-8px 0 10px;letter-spacing:-0.3px">Call Intelligence</h3>
+      <p style="font-size:15px;color:${gr};line-height:1.65;margin:0 0 12px">Automatické přepisy hovorů, jejich shrnutí a fulltextové vyhledávání. AI analyzuje komunikaci a vytváří podklady pro datovou analýzu.</p>
+      <a href="#" style="font-size:14px;color:${ac};text-decoration:none;font-weight:500">Zjistit více &rarr;</a>
+    </div>
+
+    <!-- Feature 02 -->
+    <div style="padding:36px 40px 0">
+      <span style="font-size:64px;font-weight:800;color:${bg2};line-height:1;display:block;letter-spacing:-2px">02</span>
+      <h3 style="font-size:20px;font-weight:700;color:${dk};margin:-8px 0 10px;letter-spacing:-0.3px">uPhone</h3>
+      <p style="font-size:15px;color:${gr};line-height:1.65;margin:0 0 12px">Moderní softphone přímo v prohlížeči. Plynulé pokračování hovoru i po zavření a opětovném otevření okna.</p>
+      <a href="#" style="font-size:14px;color:${ac};text-decoration:none;font-weight:500">Zjistit více &rarr;</a>
+    </div>
+
+    <!-- Full-width image -->
+    <div style="padding:48px 40px 0">
+      <img src="${img.dashboard}" alt="Call Intelligence dashboard" style="width:100%;border-radius:20px;display:block" width="520">
+    </div>
+
+    <!-- Feature 03 -->
+    <div style="padding:44px 40px 0">
+      <span style="font-size:64px;font-weight:800;color:${bg2};line-height:1;display:block;letter-spacing:-2px">03</span>
+      <h3 style="font-size:20px;font-weight:700;color:${dk};margin:-8px 0 10px;letter-spacing:-0.3px">uAuth</h3>
+      <p style="font-size:15px;color:${gr};line-height:1.65;margin:0">Bezpečnější a jednotné přihlašování. Podpora Single Sign-On a mobilního přístupu pro všechny uživatele.</p>
+    </div>
+
+    <!-- Feature 04 -->
+    <div style="padding:36px 40px 0">
+      <span style="font-size:64px;font-weight:800;color:${bg2};line-height:1;display:block;letter-spacing:-2px">04</span>
+      <h3 style="font-size:20px;font-weight:700;color:${dk};margin:-8px 0 10px;letter-spacing:-0.3px">Reporting</h3>
+      <p style="font-size:15px;color:${gr};line-height:1.65;margin:0">Fulltextové vyhledávání v přepisech, konfigurovatelná metadata, pokročilé filtry a nový reportovací engine.</p>
+    </div>
+
+    <!-- Feature 05 -->
+    <div style="padding:36px 40px 44px">
+      <span style="font-size:64px;font-weight:800;color:${bg2};line-height:1;display:block;letter-spacing:-2px">05</span>
+      <h3 style="font-size:20px;font-weight:700;color:${dk};margin:-8px 0 10px;letter-spacing:-0.3px">Supervizor</h3>
+      <p style="font-size:15px;color:${gr};line-height:1.65;margin:0">Hromadná správa agentů, řízení kampaní v reálném čase a diagramové zobrazení front.</p>
+    </div>
+
+    <!-- Divider -->
+    <div style="padding:0 40px"><div style="height:1px;background:${ln}"></div></div>
+
+    <!-- Quote -->
+    <div style="padding:56px 40px;text-align:center">
+      <p style="font-size:26px;font-weight:600;color:${dk};line-height:1.35;letter-spacing:-0.5px;margin:0;font-style:italic">&ldquo;Díky AI přepisům jsme zkrátili analýzu hovorů o třetinu.&rdquo;</p>
+      <p style="font-size:13px;color:${gr};margin:16px 0 0;font-style:normal">— Vedoucí kontaktního centra, enterprise zákazník</p>
+    </div>
+
+    <!-- Divider -->
+    <div style="padding:0 40px"><div style="height:1px;background:${ln}"></div></div>
+
+    <!-- Roadmap -->
+    <div style="padding:56px 40px;text-align:center">
+      <p style="font-size:13px;font-weight:600;color:${ac};text-transform:uppercase;letter-spacing:0.12em;margin:0 0 10px">Výhled 2026</p>
+      <h2 style="font-size:32px;font-weight:700;letter-spacing:-0.8px;color:${dk};margin:0 0 20px;line-height:1.15">Co přijde dál.</h2>
+      <p style="font-size:16px;color:${gr};line-height:1.7;margin:0 0 32px">
+        <span style="color:${dk};font-weight:600">VoiceBot</span> &middot;
+        <span style="color:${dk};font-weight:600">AI optimalizace</span> &middot;
+        <span style="color:${dk};font-weight:600">Férovější fronty</span> &middot;
+        <span style="color:${dk};font-weight:600">Dispečerský mód</span>
+      </p>
+      <a href="#" style="display:inline-block;border:1.5px solid ${ac};color:${ac};font-size:14px;font-weight:500;padding:11px 26px;border-radius:980px;text-decoration:none">Chci být informován &rarr;</a>
+    </div>
+
+    <!-- Divider -->
+    <div style="padding:0 40px"><div style="height:1px;background:${ln}"></div></div>
+
+    <!-- Blog teaser -->
+    <div style="padding:48px 40px;text-align:center">
+      <p style="font-size:13px;font-weight:600;color:${ac};text-transform:uppercase;letter-spacing:0.12em;margin:0 0 10px">Z oboru</p>
+      <h2 style="font-size:24px;font-weight:700;letter-spacing:-0.5px;color:${dk};margin:0 0 12px;line-height:1.25">AI přepisy hovorů:<br>praktický průvodce.</h2>
+      <p style="font-size:15px;color:${gr};line-height:1.6;margin:0 0 24px;max-width:380px;margin-left:auto;margin-right:auto">Proč jsou užitečné, co umožňují a jak s nimi pracovat. Přečtěte si na našem blogu.</p>
+      <a href="#" style="font-size:14px;color:${ac};text-decoration:none;font-weight:500">Přečíst článek &rarr;</a>
+    </div>
+
+    <!-- CTA section -->
+    <div style="margin:0 24px;padding:48px 32px;background:${bg2};border-radius:20px;text-align:center">
+      <h2 style="font-size:28px;font-weight:700;letter-spacing:-0.5px;color:${dk};margin:0 0 8px;line-height:1.2">Osobní konzultace.</h2>
+      <p style="font-size:17px;color:${gr};margin:0 0 8px;line-height:1.5">15 minut. Online. Nezávazně.</p>
+      <p style="font-size:13px;color:${ac};font-weight:600;margin:0 0 24px">Zbývá 8 volných termínů na Q2</p>
+      <a href="#" style="display:inline-block;background:${dk};color:#fff;font-size:15px;font-weight:500;padding:13px 30px;border-radius:980px;text-decoration:none">Rezervovat termín &rarr;</a>
+    </div>
+
+    <!-- PS -->
+    <div style="padding:32px 40px 0;text-align:center">
+      <p style="font-size:13px;color:${gr};margin:0">Odpovězte na tento email slovem <strong style="color:${dk}">DEMO</strong> a ozveme se do 24h.</p>
+    </div>
+
+    ${footer9()}
+    </div>`;
+}
+
 // --- Variant Summaries ---
 const variantSummaries = {
   1: {
@@ -2275,6 +2426,51 @@ const variantSummaries = {
         'Testovat emoji feedback vs. 1–5 hvězdiček rating'
       ]
     }
+  },
+  9: {
+    title: 'V9 — Apple design',
+    subtitle: 'Minimalistický, čistý, zapamatovatelný',
+    desc: 'Kompletně nový vizuální styl inspirovaný Apple designem. Vlastní logo „insoft.", indigo accent (#5856d6), velká typografie, generózní whitespace, číslované features, pill CTA tlačítka a ultra-minimální footer. Žádné ikony, žádné karty — jen text a prostor.',
+    compat: 'Dobrá ★★★☆☆',
+    compatDetail: 'System font stack (-apple-system) funguje ve většině klientů. Velké font-size a letter-spacing mohou vypadat odlišně v Outlooku. Pill border-radius (980px) nefunguje v MSO. Centered layout je bezpečný.',
+    plus: [
+      'Vizuálně unikátní — okamžitě odlišitelný od konkurence',
+      'Extrémní čistota — žádný vizuální šum',
+      'Velká typografie přitahuje pozornost',
+      'Generózní whitespace — příjemné čtení',
+      'Pill CTA tlačítka — moderní a klikatelná',
+      'Numbered features — jasná struktura',
+      'Nový logo styl „insoft." — fresh branding',
+      'Testimonial velkým fontem — silný social proof'
+    ],
+    minus: [
+      'Pill border-radius nefunguje ve starém Outlooku',
+      'Velký whitespace = dlouhý scroll',
+      'Méně obsahu než V1/V7 — zkrácené popisy',
+      'Apple styl nemusí sedět konzervativnějším B2B příjemcům',
+      'Nové logo může zmást stávající zákazníky'
+    ],
+    marketing: {
+      rating: '9/10',
+      ratingLabel: 'Výjimečný design s vysokým engagement potenciálem',
+      verdict: 'Tohle je designově nejsilnější varianta. Apple-inspired minimalismus vytváří premium dojem, který buduje důvěru. Velká typografie a whitespace zajišťují, že každý element dostane pozornost. CTA pill tlačítka jsou moderní a zvou ke kliknutí. Testimonial velkým písmem je silný. Jediné riziko: konzervativnější B2B příjemci mohou preferovat tradičnější styl.',
+      missing: [
+        'Preheader text pro inbox preview',
+        'Personalizace oslovení',
+        'Konkrétní metriky/čísla (social proof bar)',
+        'Více obrázků — aktuálně jen jeden dashboard screenshot',
+        'Video thumbnail nebo GIF pro vyšší engagement'
+      ],
+      imageSuggestions: 'Záměrně minimální — jeden dashboard screenshot s velkým border-radius (20px) jako vizuální break. Apple přístup: méně obrázků, více typografie. Pro produkci zvážit přidání jednoho hero obrázku nahoře a jednoho u blog sekce. Kvalita >> kvantita.',
+      ideas: [
+        'Přidat animovaný GIF nebo Lottie animaci u čísla „01" pro wow efekt',
+        'A/B test: indigo accent vs. teal (stávající brand) — měří brand refresh impact',
+        'Přidat preheader: „Inteligentní komunikace. 5 novinek pro Vaše CC."',
+        'U features přidat „Nové" badge jen u Call Intelligence — focus pozornosti',
+        'Blog sekci rozšířit o mini-preview obsahu (3 bullet pointy)',
+        'Přidat dark mode verzi — Apple design skvěle funguje v tmavém režimu'
+      ]
+    }
   }
 };
 
@@ -2288,7 +2484,8 @@ function getVariantHTML() {
   else if (state.variant === 5) html = variant5();
   else if (state.variant === 6) html = variant6();
   else if (state.variant === 7) html = variant7();
-  else html = variant8();
+  else if (state.variant === 8) html = variant8();
+  else html = variant9();
   return fixSrc(html);
 }
 
