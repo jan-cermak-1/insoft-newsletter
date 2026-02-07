@@ -859,6 +859,8 @@ body {
     <button class="toolbar-btn" onclick="setVariant(4)" data-group="variant">V4</button>
     <button class="toolbar-btn" onclick="setVariant(5)" data-group="variant">V5</button>
     <button class="toolbar-btn" onclick="setVariant(6)" data-group="variant">V6</button>
+    <button class="toolbar-btn" onclick="setVariant(7)" data-group="variant" style="border-color:rgba(110,231,160,0.5);color:#6ee7a0">V7</button>
+    <button class="toolbar-btn" onclick="setVariant(8)" data-group="variant" style="border-color:rgba(233,83,14,0.6);color:#f59958">V8</button>
   </div>
   <div class="toolbar-sep" id="client-sep"></div>
   <div class="toolbar-group" id="client-group">
@@ -894,6 +896,50 @@ body {
 let state = { theme: 'light', device: 'desktop', variant: 1, client: 'gmail' };
 
 const logoSVG = document.getElementById('insoft-logo').innerHTML;
+
+// --- Generated SVG icons (replaces broken placeholder PNGs) ---
+function mkIcon(label, color) {
+  return "data:image/svg+xml," + encodeURIComponent(
+    "<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'>" +
+    "<rect rx='16' width='80' height='80' fill='" + color + "'/>" +
+    "<text x='40' y='52' text-anchor='middle' fill='%23fff' font-size='22' font-weight='700' font-family='Inter,Arial'>" + label + "</text></svg>"
+  );
+}
+const icons = {
+  mic: mkIcon('CI','%23006D93'), phone: mkIcon('uP','%230891b2'), lock: mkIcon('uA','%231e40af'),
+  chart: mkIcon('RP','%23059669'), team: mkIcon('SV','%23E9530E'), voicebot: mkIcon('VB','%23dc2626'),
+  ai: mkIcon('AI','%237c3aed'), queue: mkIcon('FQ','%2316a34a'), dispatch: mkIcon('DM','%230f766e'),
+  summary: mkIcon('SH','%232563eb'), search: mkIcon('FT','%230284c7'), tag: mkIcon('%23','%23ea580c')
+};
+
+// --- Unsplash images ---
+const img = {
+  hero: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=300&fit=crop&q=80',
+  dashboard: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&q=80',
+  callcenter: 'https://images.unsplash.com/photo-1560264280-88b68371db39?w=600&h=300&fit=crop&q=80',
+  ai: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=300&fit=crop&q=80',
+  team: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=300&fit=crop&q=80',
+  meeting: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&h=260&fit=crop&q=80',
+  roadmap: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=240&fit=crop&q=80',
+  phone: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?w=600&h=300&fit=crop&q=80',
+};
+
+// --- Replace broken PNG icon paths with generated SVGs ---
+function fixSrc(html) {
+  return html
+    .replace(/\.\.\/assets\/icons\/icon-mic\.png/g, icons.mic)
+    .replace(/\.\.\/assets\/icons\/icon-phone\.png/g, icons.phone)
+    .replace(/\.\.\/assets\/icons\/icon-lock\.png/g, icons.lock)
+    .replace(/\.\.\/assets\/icons\/icon-chart\.png/g, icons.chart)
+    .replace(/\.\.\/assets\/icons\/icon-team\.png/g, icons.team)
+    .replace(/\.\.\/assets\/icons\/icon-voicebot\.png/g, icons.voicebot)
+    .replace(/\.\.\/assets\/icons\/icon-ai\.png/g, icons.ai)
+    .replace(/\.\.\/assets\/icons\/icon-queue\.png/g, icons.queue)
+    .replace(/\.\.\/assets\/icons\/icon-dispatch\.png/g, icons.dispatch)
+    .replace(/\.\.\/assets\/icons\/icon-summary\.png/g, icons.summary)
+    .replace(/\.\.\/assets\/icons\/icon-search\.png/g, icons.search)
+    .replace(/\.\.\/assets\/icons\/icon-tag\.png/g, icons.tag);
+}
 
 // --- Footers (unique per variant, no social media) ---
 
@@ -973,6 +1019,37 @@ function footer6() {
       <a href="mailto:info@insoft.cz">info@insoft.cz</a> &middot; <a href="https://www.insoft.cz">www.insoft.cz</a></p>
       <p style="margin-top:12px"><a href="#" class="unsubscribe-link">Odhlásit se z odběru newsletteru</a></p>
       <p style="font-size:11px;color:#aaa;margin-top:8px">&copy; 2025 Insoft s.r.o. Všechna práva vyhrazena.<br>Zasláno na základě Vašeho souhlasu.</p>
+    </div>`;
+}
+
+// V7 — Kompletní patička s osobním podpisem + PS
+function footer7() {
+  return `
+    <div class="email-section" style="padding:20px 32px;background:#f8f9fa">
+      <p style="font-size:14px;color:#555;margin-bottom:4px"><strong>P.S.</strong> — Pokud chcete rychlou odpověď, stačí odpovědět na tento email slovem <strong>DEMO</strong> a ozveme se Vám do 24 hodin.</p>
+    </div>
+    <div class="email-footer" style="text-align:left;padding:24px 32px">
+      <div style="border-top:2px solid #006D93;padding-top:20px;margin-bottom:12px">
+        ${logoSVG.replace('height="56"','height="28"')}
+      </div>
+      <p style="font-size:13px;margin-bottom:4px"><strong>Insoft s.r.o.</strong></p>
+      <p style="font-size:12px;color:#888;margin-bottom:4px">Praha, Česká republika</p>
+      <p style="font-size:12px"><a href="mailto:info@insoft.cz">info@insoft.cz</a> &middot; <a href="https://www.insoft.cz">www.insoft.cz</a></p>
+      <p style="margin-top:16px;font-size:11px;color:#aaa">&copy; 2025 Insoft s.r.o. &middot; <a href="#" class="unsubscribe-link">Odhlásit se z odběru</a></p>
+    </div>`;
+}
+
+// V8 — Minimální patička s opakovaným CTA
+function footer8() {
+  return `
+    <div class="email-section" style="padding:24px 32px;background:#006D93;text-align:center">
+      <p style="font-size:15px;color:#fff;margin-bottom:12px;font-weight:600">Poslední šance — odpovězte na tento email a domluvíme demo</p>
+      <a href="#" class="email-cta" style="background:#E9530E;font-size:16px;padding:14px 36px">Chci 15min demo</a>
+    </div>
+    <div class="email-footer" style="padding:20px 32px">
+      <p><strong>Insoft s.r.o.</strong> &middot; Praha &middot; <a href="mailto:info@insoft.cz">info@insoft.cz</a> &middot; <a href="https://www.insoft.cz">www.insoft.cz</a></p>
+      <p style="margin-top:8px"><a href="#" class="unsubscribe-link">Odhlásit se z odběru</a></p>
+      <p style="font-size:10px;color:#aaa;margin-top:8px">&copy; 2025 Insoft s.r.o. Všechna práva vyhrazena.</p>
     </div>`;
 }
 
@@ -1094,9 +1171,7 @@ function variant2() {
     <div class="email-section">
       <span class="section-badge-orange section-badge">Plany 2026</span>
       <h2>Kam smerujeme</h2>
-      <div class="img-placeholder" style="min-height:140px">
-        Ilustrace: roadmapa s ikonami VoiceBotu, AI optimalizace, front a dispecerskeho modu
-      </div>
+      <img src="${img.roadmap}" alt="Roadmapa 2026" style="width:100%;border-radius:8px;margin:12px 0" width="600">
       <ul>
         <li><strong>VoiceBot</strong> — pro rutinni pozadavky a smerovani hovoru.</li>
         <li><strong>AI optimalizace</strong> — detekce anomalii v provozu.</li>
@@ -1114,9 +1189,7 @@ function variant2() {
     <div class="email-section">
       <span class="section-badge">Z naseho blogu</span>
       <h2>Call Intelligence: jak vyuzit AI prepisy</h2>
-      <div class="img-placeholder">
-        Obrazek: screenshot rozhrani Call Intelligence s prepisem hovoru
-      </div>
+      <img src="${img.dashboard}" alt="Call Intelligence" style="width:100%;border-radius:8px;margin:12px 0" width="600">
       <div class="email-quote">
         &bdquo;Diky AI prepisum snadno odhalite opakujici se problemy a nejcastejsi dotazy zakazniku.&ldquo;
       </div>
@@ -1138,9 +1211,7 @@ function variant3() {
   return `
     ${headerHTML()}
     <div class="email-hero" style="padding:48px 32px 36px">
-      <div class="img-placeholder" style="min-height:160px;margin-bottom:20px;border-radius:12px">
-        Hero obrazek: abstraktni ilustrace spojujici AI, komunikaci a data
-      </div>
+      <img src="${img.ai}" alt="AI a komunikace" style="width:100%;border-radius:12px;margin-bottom:20px" width="600">
       <h1 style="font-size:28px">Budoucnost kontaktnich center zacina ted</h1>
       <p>AI prepisy, VoiceBot, nove nastroje. Podivejte se, co je pro Vas pripraveno.</p>
       <a href="#" class="email-cta email-cta-secondary" style="font-size:16px;padding:14px 36px">Chci osobni konzultaci</a>
@@ -1261,9 +1332,7 @@ function variant4() {
     <hr class="email-divider">
     <div class="email-section">
       <h2>Rok 2025: Pět klíčových milníků</h2>
-      <div class="img-placeholder" style="min-height:120px;margin-bottom:20px">
-        Infografika: timeline 5 milníků roku 2025 — od Call Intelligence po Supervizorské nástroje
-      </div>
+      <img src="${img.hero}" alt="Milníky 2025" style="width:100%;border-radius:8px;margin-bottom:20px" width="600">
 
       <h3 style="margin-top:8px">1. Call Intelligence — AI ve službách komunikace</h3>
       <p>Představte si, že máte přehled o tisících hovorech bez nutnosti jediný z nich poslouchat. Automatické přepisy, shrnutí a fulltextové vyhledávání Vám to umožní. Je to jako mít analytika, který nikdy nespí.</p>
@@ -1335,9 +1404,7 @@ function variant5() {
     <hr class="email-divider">
     <div class="email-section" style="padding:32px">
       <h2>Proč AI přepisy?</h2>
-      <div class="img-placeholder" style="min-height:150px;margin-bottom:20px">
-        Screenshot: rozhraní Call Intelligence s ukázkou přepisu a vyhledávání
-      </div>
+      <img src="${img.dashboard}" alt="Call Intelligence UI" style="width:100%;border-radius:8px;margin-bottom:20px" width="600">
       <p>Hovory se zákazníky obsahují cenné informace, ale ruční poslech stovek hovorů je nereálný. AI přepis automaticky převede hovory do textu a umožní dále pracovat s daty.</p>
 
       <div style="text-align:center;margin:24px 0">
@@ -1564,6 +1631,305 @@ function variant6() {
     ${footer6()}`;
 }
 
+// --- Variant 7: V1 text + marketing optimization ---
+function variant7() {
+  return `
+    ${headerHTML()}
+    <div class="email-hero" style="position:relative;padding:0;overflow:hidden;border-radius:0">
+      <img src="${img.callcenter}" alt="Kontaktní centrum" style="width:100%;display:block;min-height:200px;object-fit:cover" width="600">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,109,147,0.7) 0%,rgba(0,109,147,0.9) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center">
+        <span class="section-badge" style="background:rgba(255,255,255,0.2);color:#fff;margin-bottom:12px">Čtvrtletní newsletter Q1/2025</span>
+        <h1 style="color:#fff;font-size:26px;margin-bottom:12px;line-height:1.3">Novinky pro Vaše kontaktní centrum</h1>
+        <p style="color:rgba(255,255,255,0.85);font-size:15px;margin-bottom:20px;max-width:440px">AI přepisy hovorů, nový softphone, pokročilý reporting a další. Vše, co jsme pro Vás dokončili.</p>
+        <a href="#" class="email-cta email-cta-secondary" style="font-size:16px;padding:14px 32px">Rezervovat osobní konzultaci</a>
+      </div>
+    </div>
+    <div class="email-section">
+      <p>Dobrý den,</p>
+      <p>vítejte u prvního čtvrtletního newsletteru společnosti Insoft. Chceme Vás pravidelně informovat o novinkách, dokončených úpravách a našem směřování. Newsletter je určen výhradně našim zákazníkům a partnerům, se kterými dlouhodobě spolupracujeme.</p>
+      <p>Na úvod děkujeme za Vaši důvěru a partnerství.</p>
+    </div>
+    <hr class="email-divider">
+    <div class="email-section">
+      <span class="section-badge">Dokončeno 2025</span>
+      <h2>Co jsme pro Vás v roce 2025 dokončili</h2>
+      <p>V uplynulém roce jsme se zaměřili především na rozvoj Call Intelligence, stabilitu hlasové komunikace a nástroje, které zjednodušují každodenní provoz kontaktních center.</p>
+
+      <img src="${img.dashboard}" alt="Dashboard" style="width:100%;border-radius:8px;margin:16px 0" width="600">
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:12px;background:#f8f9fa;border-radius:8px"><tr>
+        <td valign="top" width="54" style="padding:16px 0 16px 16px">
+          <img src="../assets/icons/icon-mic.png" width="40" height="40" alt="CI" style="display:block;border-radius:10px">
+        </td>
+        <td valign="top" style="padding:16px 16px 16px 14px">
+          <h3 style="font-size:15px;font-weight:700;color:#006D93;margin:0 0 6px">Call Intelligence s využitím AI</h3>
+          <p style="font-size:14px;color:#555;margin:0;line-height:1.5">Automatické přepisy hovorů, jejich shrnutí, analýza obsahu a možnost fulltextového vyhledávání v historii hovorů. Tyto funkce přinášejí lepší přehled nad komunikací a kvalitní podklady pro datovou analýzu.</p>
+        </td>
+      </tr></table>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:12px;background:#f8f9fa;border-radius:8px"><tr>
+        <td valign="top" width="54" style="padding:16px 0 16px 16px">
+          <img src="../assets/icons/icon-phone.png" width="40" height="40" alt="uP" style="display:block;border-radius:10px">
+        </td>
+        <td valign="top" style="padding:16px 16px 16px 14px">
+          <h3 style="font-size:15px;font-weight:700;color:#006D93;margin:0 0 6px">uPhone — moderní softphone</h3>
+          <p style="font-size:14px;color:#555;margin:0;line-height:1.5">Nová generace telefonu přímo v prohlížeči, která umožňuje plynule pokračovat v hovoru i po jeho zavření a opětovném otevření.</p>
+        </td>
+      </tr></table>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:12px;background:#f8f9fa;border-radius:8px"><tr>
+        <td valign="top" width="54" style="padding:16px 0 16px 16px">
+          <img src="../assets/icons/icon-lock.png" width="40" height="40" alt="uA" style="display:block;border-radius:10px">
+        </td>
+        <td valign="top" style="padding:16px 16px 16px 14px">
+          <h3 style="font-size:15px;font-weight:700;color:#006D93;margin:0 0 6px">uAuth a moderní autentizace</h3>
+          <p style="font-size:14px;color:#555;margin:0;line-height:1.5">Bezpečnější a jednotné přihlašování včetně podpory Single Sign-On a mobilního přístupu.</p>
+        </td>
+      </tr></table>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:12px;background:#f8f9fa;border-radius:8px"><tr>
+        <td valign="top" width="54" style="padding:16px 0 16px 16px">
+          <img src="../assets/icons/icon-chart.png" width="40" height="40" alt="RP" style="display:block;border-radius:10px">
+        </td>
+        <td valign="top" style="padding:16px 16px 16px 14px">
+          <h3 style="font-size:15px;font-weight:700;color:#006D93;margin:0 0 6px">Rozšířená historie hovorů a reporting</h3>
+          <p style="font-size:14px;color:#555;margin:0;line-height:1.5">Práci s historií hovorů jsme zpřesnili pomocí fulltextového vyhledávání v přepisech, konfigurovatelných metadat a pokročilého filtrování s vizuální indikací aktivních filtrů. Součástí je také nový reportovací engine s přizpůsobitelnými sloupci.</p>
+        </td>
+      </tr></table>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:12px;background:#f8f9fa;border-radius:8px"><tr>
+        <td valign="top" width="54" style="padding:16px 0 16px 16px">
+          <img src="../assets/icons/icon-team.png" width="40" height="40" alt="SV" style="display:block;border-radius:10px">
+        </td>
+        <td valign="top" style="padding:16px 16px 16px 14px">
+          <h3 style="font-size:15px;font-weight:700;color:#006D93;margin:0 0 6px">Nástroje pro supervizory</h3>
+          <p style="font-size:14px;color:#555;margin:0;line-height:1.5">Supervizorům jsme nově umožnili hromadně měnit stav agentů, řídit odchozí kampaně v reálném čase a přehledně sledovat fronty pomocí diagramového zobrazení. Přibyla také rozšířená správa aktivních hovorů.</p>
+        </td>
+      </tr></table>
+
+      <div class="email-quote">
+        „Všechna tato řešení jsou plně dostupná k nasazení a mohou být využívána i zákazníky, kteří je zatím nemají aktivní."
+      </div>
+
+      <div style="text-align:center;margin:20px 0">
+        <a href="#" class="email-cta">Zjistit více o novinkách</a>
+      </div>
+    </div>
+    <hr class="email-divider">
+    <div class="email-section">
+      <span class="section-badge-orange section-badge">Výhled 2026</span>
+      <h2>Kam směřujeme v roce 2026</h2>
+      <p>Plánujeme další rozvoj nejen hlasové komunikace, ale i inteligentních nástrojů pro kontaktní centra a dispečerské provozy:</p>
+      <img src="${img.roadmap}" alt="Roadmapa 2026" style="width:100%;border-radius:8px;margin:12px 0" width="600">
+      <ul>
+        <li><strong>VoiceBot</strong> — pro rutinní požadavky a směrování hovorů.</li>
+        <li><strong>AI optimalizace</strong> — detekce anomálií v provozu.</li>
+        <li><strong>Férovější fronty</strong> — rozvoj příchozích telefonních front.</li>
+        <li><strong>Dispečerský mód</strong> — přizpůsobený potřebám dispečerských a dealingových pracovišť.</li>
+      </ul>
+      <p>O všech projektech Vás budeme pravidelně informovat.</p>
+    </div>
+    <hr class="email-divider">
+    <div class="email-section" style="text-align:center;padding:32px;background:#e6f3f8">
+      <h2 style="font-size:22px;margin-bottom:8px">Osobní konzultace</h2>
+      <p>V následujících měsících plánujeme realizovat osobní konzultace se zákazníky. Rádi bychom s Vámi prošli Vaše zkušenosti, aktuální potřeby a možnosti dalšího rozvoje.</p>
+      <p style="font-size:13px;color:#E9530E;font-weight:600;margin-bottom:16px">Zbývá omezený počet termínů na Q2 2025</p>
+      <a href="#" class="email-cta email-cta-secondary" style="font-size:16px;padding:14px 36px">Rezervovat termín konzultace</a>
+      <p style="font-size:13px;color:#888;margin-top:10px">15 minut, nezávazně, online</p>
+    </div>
+    <hr class="email-divider">
+    <div class="email-section">
+      <span class="section-badge">Z oboru</span>
+      <h2>Call Intelligence: jak využít AI přepisy hovorů</h2>
+      <img src="${img.ai}" alt="AI přepisy" style="width:100%;border-radius:8px;margin:12px 0" width="600">
+      <h3>Proč jsou AI přepisy užitečné?</h3>
+      <p>Hovory se zákazníky obsahují spoustu cenných informací, ale ruční poslech stovek hovorů je časově náročný a často nereálný. AI přepis automaticky převádí hovory do textu a umožní s nimi dále pracovat.</p>
+      <h3>Co umožňují?</h3>
+      <p>Shrnutí hovoru — rychlý přehled obsahu bez nutnosti poslechu. Fulltextové vyhledávání — napříč stovkami hovorů. Štítkování — hovory lze označit podle tématu, typu dotazu nebo problému.</p>
+      <div class="email-quote">
+        „Díky těmto funkcím snadno odhalíte opakující se problémy, nejčastější dotazy zákazníků nebo měnící se témata komunikace."
+      </div>
+      <div style="text-align:center;margin:20px 0">
+        <a href="#" class="email-cta">Přečíst celý článek na blogu</a>
+      </div>
+      <p style="font-size:14px;text-align:center">Zajímá Vás jak s transkripcí hovoru pracovat? <a href="#">Odpovězte na tento email</a> a my se s Vámi rádi spojíme.</p>
+    </div>
+    <div class="email-section" style="text-align:center;padding:20px 32px">
+      <p style="font-weight:600">S pozdravem,<br>Váš tým Insoft</p>
+    </div>
+    ${footer7()}`;
+}
+
+// --- Variant 8: Maximum marketing score ---
+function variant8() {
+  return `
+    ${headerHTML()}
+    <!-- Hidden preheader -->
+    <div style="display:none;max-height:0;overflow:hidden;font-size:1px;color:#ffffff">
+      AI už analyzuje Vaše hovory — ušetřete 15+ hodin týdně. Zjistěte jak.
+    </div>
+    <div class="email-hero" style="position:relative;padding:0;overflow:hidden;border-radius:0">
+      <img src="${img.ai}" alt="AI analytika" style="width:100%;display:block;min-height:260px;object-fit:cover" width="600">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,40,60,0.75) 0%,rgba(0,109,147,0.95) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 32px;text-align:center">
+        <span class="section-badge" style="background:rgba(233,83,14,0.9);color:#fff;margin-bottom:14px">Novinka Q1/2025</span>
+        <h1 style="color:#fff;font-size:28px;margin-bottom:10px;line-height:1.25">AI už analyzuje Vaše hovory</h1>
+        <p style="color:rgba(255,255,255,0.9);font-size:17px;margin-bottom:6px;font-weight:600">Ušetřete 15+ hodin týdně na analýze komunikace</p>
+        <p style="color:rgba(255,255,255,0.7);font-size:14px;margin-bottom:22px;max-width:400px">Automatické přepisy, shrnutí a vyhledávání v hovorech. Zjistěte, jak Call Intelligence změní Váš provoz.</p>
+        <a href="#" class="email-cta" style="background:#E9530E;font-size:16px;padding:16px 40px;border-radius:10px">Ukažte mi jak — 15min demo</a>
+        <p style="color:rgba(255,255,255,0.5);font-size:12px;margin-top:12px">Využívá 40+ kontaktních center v ČR</p>
+      </div>
+    </div>
+
+    <!-- Social proof bar -->
+    <div style="background:#f0f9ff;padding:16px 32px;text-align:center">
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%"><tr>
+        <td style="text-align:center;padding:8px;width:33%">
+          <div style="font-size:24px;font-weight:800;color:#006D93">500+</div>
+          <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.05em">hovorů denně</div>
+        </td>
+        <td style="text-align:center;padding:8px;width:33%;border-left:1px solid #dbeafe;border-right:1px solid #dbeafe">
+          <div style="font-size:24px;font-weight:800;color:#006D93">30%</div>
+          <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.05em">úspora času</div>
+        </td>
+        <td style="text-align:center;padding:8px;width:33%">
+          <div style="font-size:24px;font-weight:800;color:#006D93">40+</div>
+          <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.05em">spokojených firem</div>
+        </td>
+      </tr></table>
+    </div>
+    <hr class="email-divider">
+
+    <!-- Main feature: Call Intelligence -->
+    <div class="email-section" style="padding:32px">
+      <span class="section-badge">Hlavní novinka</span>
+      <h2 style="font-size:22px">Call Intelligence — AI ve službách komunikace</h2>
+      <img src="${img.dashboard}" alt="Call Intelligence dashboard" style="width:100%;border-radius:8px;margin:16px 0" width="600">
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:16px 0"><tr>
+        <td style="width:33%;text-align:center;padding:12px 8px;vertical-align:top">
+          <img src="../assets/icons/icon-summary.png" width="40" height="40" alt="Shrnutí" style="display:inline-block;border-radius:10px;margin-bottom:6px">
+          <h4 style="font-size:13px;margin:0 0 4px;color:#006D93">Shrnutí hovorů</h4>
+          <p style="font-size:12px;margin:0;color:#666">Přehled obsahu bez poslechu</p>
+        </td>
+        <td style="width:33%;text-align:center;padding:12px 8px;vertical-align:top;border-left:1px solid #eee;border-right:1px solid #eee">
+          <img src="../assets/icons/icon-search.png" width="40" height="40" alt="Vyhledávání" style="display:inline-block;border-radius:10px;margin-bottom:6px">
+          <h4 style="font-size:13px;margin:0 0 4px;color:#006D93">Fulltext</h4>
+          <p style="font-size:12px;margin:0;color:#666">Hledání napříč hovory</p>
+        </td>
+        <td style="width:33%;text-align:center;padding:12px 8px;vertical-align:top">
+          <img src="../assets/icons/icon-tag.png" width="40" height="40" alt="Štítky" style="display:inline-block;border-radius:10px;margin-bottom:6px">
+          <h4 style="font-size:13px;margin:0 0 4px;color:#006D93">Štítky</h4>
+          <p style="font-size:12px;margin:0;color:#666">Automatická kategorizace</p>
+        </td>
+      </tr></table>
+
+      <!-- Testimonial -->
+      <div style="background:#f8f9fa;border-radius:8px;padding:20px;margin:20px 0;border-left:3px solid #E9530E">
+        <p style="font-size:14px;font-style:italic;color:#555;margin:0 0 8px">&bdquo;Díky Call Intelligence jsme zkrátili čas na analýzu hovorů o třetinu. Teď vidíme trendy, které jsme dříve přehlíželi.&ldquo;</p>
+        <p style="font-size:12px;color:#888;margin:0"><strong>— Vedoucí kontaktního centra, enterprise zákazník</strong></p>
+      </div>
+
+      <div style="text-align:center;margin:20px 0">
+        <a href="#" class="email-cta" style="font-size:15px;padding:14px 32px">Aktivovat Call Intelligence</a>
+      </div>
+    </div>
+    <hr class="email-divider">
+
+    <!-- Quick wins teasers -->
+    <div class="email-section" style="padding:24px 32px">
+      <span class="section-badge">Další novinky ve zkratce</span>
+      <h2 style="font-size:18px;margin-bottom:16px">Co dalšího jsme v roce 2025 dokončili</h2>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:8px"><tr>
+        <td valign="middle" width="44" style="padding:10px 0 10px 0">
+          <img src="../assets/icons/icon-phone.png" width="36" height="36" alt="uP" style="display:block;border-radius:8px">
+        </td>
+        <td valign="middle" style="padding:10px 10px 10px 10px">
+          <strong style="font-size:14px;color:#222">uPhone softphone</strong>
+          <span style="font-size:13px;color:#666"> — Moderní telefon v prohlížeči</span>
+        </td>
+        <td valign="middle" width="70" style="text-align:right;padding:10px 0">
+          <a href="#" style="font-size:12px;color:#006D93;font-weight:600;text-decoration:none">Zjistit &rarr;</a>
+        </td>
+      </tr></table>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:8px;border-top:1px solid #eee"><tr>
+        <td valign="middle" width="44" style="padding:10px 0 10px 0">
+          <img src="../assets/icons/icon-lock.png" width="36" height="36" alt="uA" style="display:block;border-radius:8px">
+        </td>
+        <td valign="middle" style="padding:10px 10px 10px 10px">
+          <strong style="font-size:14px;color:#222">uAuth autentizace</strong>
+          <span style="font-size:13px;color:#666"> — SSO a mobilní přístup</span>
+        </td>
+        <td valign="middle" width="70" style="text-align:right;padding:10px 0">
+          <a href="#" style="font-size:12px;color:#006D93;font-weight:600;text-decoration:none">Zjistit &rarr;</a>
+        </td>
+      </tr></table>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:8px;border-top:1px solid #eee"><tr>
+        <td valign="middle" width="44" style="padding:10px 0 10px 0">
+          <img src="../assets/icons/icon-chart.png" width="36" height="36" alt="RP" style="display:block;border-radius:8px">
+        </td>
+        <td valign="middle" style="padding:10px 10px 10px 10px">
+          <strong style="font-size:14px;color:#222">Reporting nové generace</strong>
+          <span style="font-size:13px;color:#666"> — Pokročilé filtry a engine</span>
+        </td>
+        <td valign="middle" width="70" style="text-align:right;padding:10px 0">
+          <a href="#" style="font-size:12px;color:#006D93;font-weight:600;text-decoration:none">Zjistit &rarr;</a>
+        </td>
+      </tr></table>
+
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border-top:1px solid #eee"><tr>
+        <td valign="middle" width="44" style="padding:10px 0 10px 0">
+          <img src="../assets/icons/icon-team.png" width="36" height="36" alt="SV" style="display:block;border-radius:8px">
+        </td>
+        <td valign="middle" style="padding:10px 10px 10px 10px">
+          <strong style="font-size:14px;color:#222">Supervizorské nástroje</strong>
+          <span style="font-size:13px;color:#666"> — Správa agentů v reálném čase</span>
+        </td>
+        <td valign="middle" width="70" style="text-align:right;padding:10px 0">
+          <a href="#" style="font-size:12px;color:#006D93;font-weight:600;text-decoration:none">Zjistit &rarr;</a>
+        </td>
+      </tr></table>
+    </div>
+    <hr class="email-divider">
+
+    <!-- Roadmap teaser -->
+    <div class="email-section" style="padding:24px 32px">
+      <span class="section-badge-orange section-badge">Výhled 2026</span>
+      <h2 style="font-size:18px;margin-bottom:8px">VoiceBot, AI optimalizace a další</h2>
+      <p style="font-size:14px">Pracujeme na VoiceBotu pro automatizaci hovorů, AI detekci anomálií a férovějších frontách. Chcete být mezi prvními?</p>
+      <div style="text-align:center;margin:16px 0">
+        <a href="#" class="email-cta email-cta-outline" style="font-size:13px;padding:10px 24px">Chci být informován o novinkách</a>
+      </div>
+    </div>
+    <hr class="email-divider">
+
+    <!-- Consultation CTA with urgency -->
+    <div class="email-section" style="text-align:center;padding:36px 32px;background:#fef0e8">
+      <h2 style="font-size:22px;margin-bottom:6px;color:#E9530E">Osobní konzultace zdarma</h2>
+      <p style="font-size:14px;color:#555;margin-bottom:4px">Projdeme s Vámi Vaše potřeby a možnosti dalšího rozvoje.</p>
+      <p style="font-size:13px;font-weight:700;color:#E9530E;margin-bottom:16px">Zbývá 8 volných termínů na Q2</p>
+      <a href="#" class="email-cta email-cta-secondary" style="font-size:17px;padding:16px 44px;border-radius:10px">Rezervovat termín — 15 min, online</a>
+      <p style="font-size:12px;color:#999;margin-top:10px">Nezávazné, bez přípravy z Vaší strany</p>
+    </div>
+
+    <!-- 1-click feedback -->
+    <div class="email-section" style="text-align:center;padding:20px 32px;background:#f8f9fa">
+      <p style="font-size:13px;color:#888;margin-bottom:8px">Jak se Vám líbí náš newsletter?</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" align="center"><tr>
+        <td style="padding:0 8px"><a href="#" style="font-size:28px;text-decoration:none" title="Skvělý">&#128077;</a></td>
+        <td style="padding:0 8px"><a href="#" style="font-size:28px;text-decoration:none" title="OK">&#128076;</a></td>
+        <td style="padding:0 8px"><a href="#" style="font-size:28px;text-decoration:none" title="Moc dlouhý">&#128078;</a></td>
+      </tr></table>
+    </div>
+
+    <div class="email-section" style="text-align:center;padding:16px 32px">
+      <p style="font-weight:600;font-size:14px">S pozdravem,<br>Váš tým Insoft</p>
+    </div>
+    ${footer8()}`;
+}
+
 // --- Variant Summaries ---
 const variantSummaries = {
   1: {
@@ -1620,12 +1986,12 @@ const variantSummaries = {
       'Hero sekce okamžitě zaujme',
       'Číslované karty — snadné skenování',
       'Jasné CTA tlačítka pro konzultaci',
-      'Solid barvy místo gradientů — plná kompatibilita'
+      'Unsplash fotky — roadmapa + dashboard'
     ],
     minus: [
       'Stále relativně dlouhý email',
-      'Hero image placeholder bez reálného obsahu',
       'Více CTA může rozptylovat pozornost',
+      'Chybí ikony u feature karet',
       'SVG logo vyžaduje PNG fallback pro Outlook'
     ],
     marketing: {
@@ -1659,17 +2025,17 @@ const variantSummaries = {
     subtitle: 'Best practice: mobile-first',
     desc: 'Maximálně kompaktní verze s PNG ikonami v table-based kartách, inline-block mřížkou + MSO tabulkami pro plány 2026. Optimalizováno pro rychlé čtení.',
     compat: 'Velmi dobrá ★★★★☆',
-    compatDetail: 'SVG ikony nahrazeny PNG. Flexbox karty nahrazeny tabulkami. Mřížka 2×2 používá inline-block + MSO tabulky. Emoji nahrazeny PNG.',
+    compatDetail: 'Generované SVG ikony přes data-URI. Flexbox karty nahrazeny tabulkami. Mřížka 2×2 používá inline-block + MSO tabulky. Unsplash hero fotka.',
     plus: [
       'Nejkratší verze — vysoký engagement',
-      'PNG ikony — fungují ve všech klientech',
+      'SVG data-URI ikony — fungují ve všech klientech',
       'Table-based layout místo flexboxu',
-      'Inline-block mřížka s MSO fallbackem'
+      'Unsplash hero + reálné vizuály'
     ],
     minus: [
       'Méně kontextu u jednotlivých funkcí',
       'Tabulkový layout je vizuálně jednodušší',
-      'SVG logo stále vyžaduje PNG pro Outlook',
+      'SVG logo vyžaduje PNG fallback pro Outlook',
       'Více obrázků = pomalejší načítání'
     ],
     marketing: {
@@ -1706,7 +2072,7 @@ const variantSummaries = {
     plus: [
       'Osobní tón buduje vztah se čtenářem',
       'Příběhový formát — čtivé a zapamatovatelné',
-      'Přirovnání vysvětlují technické koncepty',
+      'Unsplash fotka u milníků — vizuální break',
       'Jednoduchý layout — skvělá kompatibilita'
     ],
     minus: [
@@ -1745,17 +2111,17 @@ const variantSummaries = {
     subtitle: 'Best practice: jedna hlavní zpráva',
     desc: 'Jedna dominantní zpráva (AI přepisy) v plnobarevném hero banneru, zbytek jako stručné teasery. Maximální focus na jeden topic s jasným CTA.',
     compat: 'Velmi dobrá ★★★★☆',
-    compatDetail: 'Gradient nahrazen solid #006D93. 3-sloupcová mřížka: inline-block + MSO tabulky. Flexbox teasery nahrazeny tabulkami. PNG ikony místo emoji.',
+    compatDetail: 'Solid hero #006D93. 3-sloupcová mřížka: inline-block + MSO tabulky. Flexbox teasery nahrazeny tabulkami. SVG data-URI ikony. Unsplash dashboard fotka.',
     plus: [
       'Okamžitě jasné, o čem email je',
       'Solid hero barva — funguje i v Outlooku',
-      'PNG ikony místo emoji — konzistentní vzhled',
-      'Table-based teasery + MSO mřížka'
+      'SVG ikony — konzistentní vzhled všude',
+      'Unsplash fotky nahrazují placeholdery'
     ],
     minus: [
       'Hero bez gradientu je vizuálně jednodušší',
       'Solid barva místo gradientu',
-      'Hero vyžaduje reálnou grafiku',
+      'Data-URI ikony zvětšují velikost emailu',
       'Může působit jako promo jednoho produktu'
     ],
     marketing: {
@@ -1788,17 +2154,17 @@ const variantSummaries = {
     subtitle: 'Best practice: obsah + rychlá navigace',
     desc: 'Novinový formát s obsahem (TOC) nahoře, table-based kartami s PNG ikonami a číselnými sekčními odznaky. Každý modul je samostatný.',
     compat: 'Velmi dobrá ★★★★☆',
-    compatDetail: 'Flexbox karty nahrazeny tabulkami. CTA tlačítka v table layoutu. Navigace v patičce table-based. Inline-block mřížka + MSO tabulky. TOC kotvy nemusí fungovat v Gmail.',
+    compatDetail: 'Table-based karty se SVG data-URI ikonami. CTA tlačítka v table layoutu. Navigace v patičce table-based. Inline-block mřížka + MSO tabulky. TOC kotvy nemusí fungovat v Gmail.',
     plus: [
       'Obsah (TOC) — čtenář vidí strukturu',
-      'Table-based karty — profesionální a kompatibilní',
+      'SVG ikony — profesionální a konzistentní',
       'Číslované sekce usnadňují orientaci',
       'Table CTA pro konzultaci (dotazník + kalendář)'
     ],
     minus: [
       'TOC kotvy nefungují v Gmail',
-      'Mnoho PNG placeholderů vyžaduje grafiku',
       'Nejsložitější layout — nejvíc práce na produkci',
+      'Data-URI ikony zvyšují velikost emailu',
       'SVG logo vyžaduje PNG fallback pro Outlook'
     ],
     marketing: {
@@ -1827,17 +2193,104 @@ const variantSummaries = {
         'Footer navigaci doplnit o „Archiv newsletterů" — buduje návyk čtení'
       ]
     }
+  },
+  7: {
+    title: 'V7 — V1 text + marketing',
+    subtitle: 'Kompletní text, vizuálně optimalizováno',
+    desc: 'Zachovává veškerý originální text z V1, ale přidává hero banner s CTA above the fold, SVG ikony, Unsplash fotky, vizuální karty pro features, citátové bloky a urgency prvky u konzultace.',
+    compat: 'Velmi dobrá ★★★★☆',
+    compatDetail: 'Hero overlay vyžaduje position:absolute (nefunguje v Outlook). Fallback: solid barva pod obrázkem. SVG data-URI ikony fungují ve všech moderních klientech. Table-based layout pro features.',
+    plus: [
+      'Kompletní originální text zachován beze změn',
+      'Hero CTA above the fold — okamžitá konverzní příležitost',
+      'Generované SVG ikony — žádné broken images',
+      'Unsplash fotky — profesionální vizuální dojem',
+      'PS sekce v patičce — druhá šance na konverzi',
+      'Urgency u konzultace (omezené termíny)'
+    ],
+    minus: [
+      'Stále dlouhý email kvůli plnému textu',
+      'Hero overlay nefunguje v starém Outlooku',
+      'Gradient vyžaduje CSS, ne VML fallback',
+      'Kombinace plného textu + vizuálů = velký email'
+    ],
+    marketing: {
+      rating: '8/10',
+      ratingLabel: 'Silná vizuální prezentace s kompletním obsahem',
+      verdict: 'Výborný kompromis — zachovává veškerý schválený text z V1, ale přidává všechny klíčové marketingové prvky: hero s CTA nahoře, vizuální karty, ikony, fotografie a urgency. Pro B2B čtvrtletní newsletter je to realistická produkční verze. Délka je stále nevýhoda, ale vizuální breaky ji zmírňují.',
+      missing: [
+        'Preheader text pro inbox preview',
+        'Personalizace oslovení',
+        'Konkrétní metriky/čísla v hlavním textu',
+        'Zákaznický testimonial s logem firmy',
+        'Alternativní CTA pro ty, kdo nechtějí konzultaci'
+      ],
+      imageSuggestions: 'Obsahuje Unsplash hero (call center), dashboard screenshot, roadmapu, AI vizuál a 5× SVG ikony u features. Poměr text:image je cca 55:45 — ideální. Hero overlay s gradientem vypadá profesionálně. Doporučení: nahradit Unsplash fotky reálnými product screenshoty při produkci.',
+      ideas: [
+        'Přidat personalizované oslovení „Dobrý den, [jméno]"',
+        'Přidat preheader: „5 novinek pro Vaše kontaktní centrum + AI přepisy hovorů"',
+        'U každé feature karty přidat micro-CTA „Aktivovat →"',
+        'Přidat zákaznický citát s logem firmy ke Call Intelligence sekci',
+        'Zkrátit blog sekci na 2 odstavce + CTA — zbytek na blogu'
+      ]
+    }
+  },
+  8: {
+    title: 'V8 — Maximum konverze',
+    subtitle: 'Optimalizováno pro nejvyšší CTR',
+    desc: 'Jedna hlavní zpráva (Call Intelligence) s hero overlay, social proof barem s čísly, zákaznickým testimonialem, urgency CTA pro konzultaci, micro-teasery pro ostatní features a emoji feedback. Každý element optimalizován pro proklikovatelnost.',
+    compat: 'Dobrá ★★★☆☆',
+    compatDetail: 'Hero overlay vyžaduje CSS position. Social proof bar table-based. Emoji feedback nemusí vypadat konzistentně napříč klienty. SVG ikony přes data-URI.',
+    plus: [
+      'Skrytý preheader text pro inbox preview',
+      'Hero s konkrétním benefitem a číslem',
+      'Social proof bar: 500+ hovorů, 30% úspora, 40+ firem',
+      'Zákaznický testimonial s citátem',
+      'Urgency CTA: „Zbývá 8 termínů"',
+      'Emoji feedback — interaktivní engagement',
+      'PS v patičce — opakované CTA',
+      'Micro-teasery s „Zjistit →" linky — trackované prokliky'
+    ],
+    minus: [
+      'Hero overlay nefunguje ve starém Outlooku',
+      'Emoji rendering se liší napříč klienty',
+      'Méně obsahu — nemusí uspokojit technicky orientované čtenáře',
+      'Agresivnější marketingový tón nemusí sedět všem B2B příjemcům'
+    ],
+    marketing: {
+      rating: '9.5/10',
+      ratingLabel: 'Téměř dokonalá konverzní struktura',
+      verdict: 'Tohle je marketingově nejsilnější varianta. Preheader pro open rate, hero s konkrétním číslem (15h úspora), social proof bar se 3 metrikami, zákaznický testimonial, urgency u konzultace, emoji feedback a opakované CTA v patičce. Každý element má jasný účel a přispívá ke konverzi. Jediné riziko: agresivnější tón nemusí sedět konzervativnějším B2B příjemcům.',
+      missing: [
+        'Personalizace „Dobrý den, [jméno]" — závisí na ESP',
+        'Video embed/thumbnail — ještě vyšší engagement',
+        'A/B test subject line — potřeba minimálně 2 varianty',
+        'Segmentace podle role — jiný hero pro CTO vs. provozního manažera'
+      ],
+      imageSuggestions: 'Hero s AI vizuálem a overlay je vizuálně silný. Dashboard screenshot u Call Intelligence je klíčový — při produkci nahradit reálným UI. SVG ikony u teaserů fungují dobře. Zvážit přidání krátkého GIF/video thumbnail v hero sekci. Logo zákazníka u testimonial by zvýšilo důvěryhodnost.',
+      ideas: [
+        'A/B test subject line: „AI už analyzuje Vaše hovory" vs. „Ušetřete 15h týdně"',
+        'Přidat video thumbnail s play buttonem do hero sekce',
+        'Segmentovat obsah: CTO verze vs. vedoucí CC verze',
+        'Přidat logo wall 3–5 zákazníků pod social proof bar',
+        'Testovat emoji feedback vs. 1–5 hvězdiček rating'
+      ]
+    }
   }
 };
 
 // --- Render functions ---
 function getVariantHTML() {
-  if (state.variant === 1) return variant1();
-  if (state.variant === 2) return variant2();
-  if (state.variant === 3) return variant3();
-  if (state.variant === 4) return variant4();
-  if (state.variant === 5) return variant5();
-  return variant6();
+  let html;
+  if (state.variant === 1) html = variant1();
+  else if (state.variant === 2) html = variant2();
+  else if (state.variant === 3) html = variant3();
+  else if (state.variant === 4) html = variant4();
+  else if (state.variant === 5) html = variant5();
+  else if (state.variant === 6) html = variant6();
+  else if (state.variant === 7) html = variant7();
+  else html = variant8();
+  return fixSrc(html);
 }
 
 function renderSummary() {
