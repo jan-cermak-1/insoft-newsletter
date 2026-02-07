@@ -899,11 +899,10 @@ const logoSVG = document.getElementById('insoft-logo').innerHTML;
 
 // --- Generated SVG icons (replaces broken placeholder PNGs) ---
 function mkIcon(label, color) {
-  return "data:image/svg+xml," + encodeURIComponent(
-    "<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'>" +
-    "<rect rx='16' width='80' height='80' fill='" + color + "'/>" +
-    "<text x='40' y='52' text-anchor='middle' fill='#fff' font-size='22' font-weight='700' font-family='Inter,Arial'>" + label + "</text></svg>"
-  );
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80">' +
+    '<rect rx="16" width="80" height="80" fill="' + color + '"/>' +
+    '<text x="40" y="52" text-anchor="middle" fill="white" font-size="24" font-weight="bold" font-family="Arial,sans-serif">' + label + '</text></svg>';
+  return 'data:image/svg+xml;base64,' + btoa(svg);
 }
 const icons = {
   mic: mkIcon('CI','#006D93'), phone: mkIcon('uP','#0891b2'), lock: mkIcon('uA','#1e40af'),
